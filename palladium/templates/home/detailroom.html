@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+    <div class = "card-wrapper">
+      <div class = "card">
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              {% for i in images %}
+              <img src = "{{i}}" alt = "">
+              {% endfor %}
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src = "{{ images.0 }}" height="100px" width="150px" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+                <img src = "{{images.1 }}" height="100px" width="100px" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                <img src = "{{images.2}}"  height="100px" width="100px" alt = "shoe image">
+              </a>
+            </div>
+           
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title"> {{room.county}}</h2>
+          <a href = "#" class = "product-link">visit {{room.county}}</a>
+          <div class = "product-rating">
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star"></i>
+            <i class = "fas fa-star-half-alt"></i>
+            <span>4.7(21)</span>
+            <!-- Rating component -->
+          </div>
+
+          <div class = "product-price">
+            
+            <p class = "new-price">New Price: <span>&euro;{{room.deposit_amount}}</span></p>
+          </div>
+
+          <div class = "product-detail">
+            <h2>about this Property: </h2>
+            <p>{{room.address}}</p>
+            <p>{{room.description}}</p>
+            <ul>
+              <li>Start Date: <span>{{room.start_date}}</span></li>
+              <li>Property age: <span>{{room.property_age}}</span></li>
+              <li>end date: <span>{{room.end_date}}</span></li>
+              <li>monthly rent amount: <span>{{room.monthly_rent_amount}}</span></li>
+              <li>deposit amount <span>{{room.deposit_amount}}</span></li>
+            </ul>
+          </div>
+
+          <div class = "purchase-info">
+            <a href="{% url 'contact' room.id %}"><button type = "button" class = "btn">
+              Enquire about <i class = "fas fa-envelope"></i>
+            </button></a>
+            <button type = "button" class = "btn">Compare</button>
+          </div>
+
+          <div class = "social-links">
+            <p>Share At: </p>
+            <a href = "#">
+              <i class = "fab fa-facebook-f"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-twitter"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-instagram"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-whatsapp"></i>
+            </a>
+            <a href = "#">
+              <i class = "fab fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
+  
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock scripts %}

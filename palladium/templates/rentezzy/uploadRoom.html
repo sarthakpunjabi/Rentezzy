@@ -1,0 +1,25 @@
+{% extends 'rentezzy/base.html' %}
+{% block content %}
+
+    <h1>Upload a Property</h1>
+    <form method="get" action="add_room">
+        Description: <label>
+        <input type="text" name="description" >
+    </label><br>
+        Price: <label>
+        <input type="text" name="price">
+    </label><br>
+        ZipCode: <label>
+        <input type="text" name="zipcode">
+    </label><br>
+        County: <label>
+        <input type="text" name="county" >
+    </label><br>
+        </label><br>
+        Capacity: <label>
+        <input type="text" name="capacity" >
+    </label><br>
+        <input type="submit">
+    </form>
+
+{% endblock %}

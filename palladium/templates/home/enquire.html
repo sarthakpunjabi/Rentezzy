@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %} 
+<link rel="stylesheet" href="{% static 'css/enquire.css' %}">
+
+<div class="contact-section">
+    <h1 class="CS">Contact Us</h1>
+    <div class="border"></div>
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <input type="text" name="name" class="contact-form-text" placeholder="Full Name">
+        <input type="email" name="email" class="contact-form-text" placeholder="Your Email" required>
+        <input type="number" name="phone" class="contact-form-text" placeholder="Phone Number (Opitonal)">
+        <textarea id="" cols="30" rows="10" name="description" class="contact-form-text" placeholder="Your Bried description"></textarea>
+        <input type="submit" class="contact-form-btn" value="Send" required>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/cs5721Project/CS5721.git']]])
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'pip3 install -r palladium/requirements.txt'
+            }
+        }
+        stage('Lint Check') {
+            agent any
+            steps {
+                sh 'pylint --exit-zero --output-format=parseable --reports=no palladium/palladium'
+                // sh 'pylint --exit-zero --output-format=parseable --reports=no palladium/palladium > pylint.log'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'python3 palladium/manage.py test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'sudo -S systemctl restart apache2'
+            }
+        }
+    }
+}
